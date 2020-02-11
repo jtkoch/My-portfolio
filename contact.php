@@ -1,4 +1,20 @@
-<!DOCTYPE HTML>
+<?php
+
+if($_POST["submit"]) {
+    $recipient="jtkoch12@gmail.com";
+    $subject="Form to email message";
+    $sender=$_POST["sender"];
+    $senderEmail=$_POST["senderEmail"];
+    $message=$_POST["message"];
+
+    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
+
+    mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
+
+    $thankYou="<p>Thank you! Your message has been sent.</p>";
+}
+
+?><!DOCTYPE HTML>
 
 <html>
 	<head>
@@ -28,22 +44,24 @@
 <!-- Form -->
   <h3></h3>
 
-  <form method="post" action="mailto:jtkoch12@gmail.com" enctype="text/plain">
+  <?=$thankYou ?>
+
+  <form method="post" action="contact.php">
     <div class="row gtr-uniform">
       <div class="col-6 col-12-xsmall">
-        <input type="text" name="NAME" id="NAME" placeholder="Name" />
+        <input type="text" name="sender" id="name" placeholder="Name" />
       </div>
       <div class="col-6 col-12-xsmall">
-        <input type="email" name="EMAIL" id="EMAIL" placeholder="Email" />
+        <input type="email" name="senderEmail" id="email" placeholder="Email" />
       </div>
       <!-- Break -->
       <div class="col-12">
-        <textarea type="text" name="MESSAGE" id="MESSAGE" placeholder="Enter your message" rows="6"></textarea>
+        <textarea type="text" name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
       </div>
       <!-- Break -->
       <div class="col-12">
         <ul class="actions">
-          <li><input type="submit" class="primary"value="Send Message" /></li> 
+          <li><input type="submit" name="submit" class="primary" value="Send Message" /></li> 
           <li><input type="reset" value="Reset" /></li>
         </ul>
       </div>
