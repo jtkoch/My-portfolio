@@ -1923,6 +1923,11 @@ button,
     text-align: left;
     font-family: "Roboto Slab", serif;
   }  
+  .skills {
+    font-size: 2rem;
+    margin: 25px;
+    text-shadow: 1px 1px #f56a6a;
+  }
   @media screen and (max-width: 3000px) {
     #header {
       padding-top: 5em; } 
